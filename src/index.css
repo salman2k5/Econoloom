@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-canvas: #101923;
+  --bg-recess: #0B1219;
+  --bg-panel: #14202E;
+  --bg-elevated: #1B2A3C;
+  --bg-glass: rgba(20, 32, 46, 0.92);
+  --border-subtle: #253548;
+  --border-hairline: #1D2B3A;
+  --focus-ring: #D5A653;
+
+  --text-primary: #F3EFE5;
+  --text-secondary: #B4BFCC;
+  --text-muted: #7E8D9E;
+
+  --intel-amber: #D5A653;
+  --intel-amber-light: #E6C27A;
+  --intel-slate: #7CA3C7;
+  --intel-crimson: #E05A6D;
+  --intel-sage: #38B688;
+
+  --stress-none: #526275;
+  --stress-low: #6BA3BE;
+  --stress-moderate: #D5A653;
+  --stress-high: #D97742;
+  --stress-severe: #E05A6D;
+  --mitigation-cyan: #38B688;
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--bg-canvas);
+    background-image: radial-gradient(
+      ellipse 85% 45% at 50% 0%,
+      rgba(27, 42, 60, 0.55) 0%,
+      rgba(16, 25, 35, 0) 100%
+    );
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .intel-kicker {
+    @apply font-mono text-[11px] font-semibold uppercase tracking-[0.11em] text-text-muted;
+  }
+
+  .intel-heading {
+    @apply font-display tracking-tight text-text-primary;
+  }
+
+  .intel-surface {
+    @apply border border-border-subtle bg-panel shadow-panel;
+  }
+
+  .intel-hairline-box {
+    @apply border border-border-subtle/80 bg-recess/80;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Precision range slider styling */
+input[type="range"] {
+  accent-color: var(--intel-amber);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Subtle dark intelligence scrollbar styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1219;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #253548;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D5A653;
+}
